@@ -7,7 +7,7 @@ const Home: NextPage = () => {
     const [pair,setPair] = useState([<></>])
     const [cvalue, setCvalue] = useState('')
     const [uvalue, setUvalue] = useState('')
-    const [csv, setCsv] = useState([''])
+    const [csv, setCsv] = useState(['computer,user'])
     const handleChangeC = (event:React.FormEvent<HTMLInputElement> ) => setCvalue(event.currentTarget.value)
     const handleChangeU = (event:React.FormEvent<HTMLInputElement> ) => setUvalue(event.currentTarget.value)
     const userButton = () => {
