@@ -17,7 +17,7 @@ const Home: NextPage = () => {
        </Tr>
 
        setPair([...pair,text])
-       setCsv([...csv,`user : ${uvalue}`])
+       setCsv([...csv,`user,${uvalue}`])
        
     }
     const computerButton = () => {
@@ -26,7 +26,7 @@ const Home: NextPage = () => {
           <Td>{cvalue}</Td>
         </Tr>
         setPair([...pair,text])
-        setCsv([...csv,`computer : ${cvalue}`])
+        setCsv([...csv,`computer,${cvalue}`])
     }
     const resetU = () => {
         setUvalue("")
