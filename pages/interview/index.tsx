@@ -19,6 +19,21 @@ const Home: NextPage = () => {
        Your browser does not support the
        </audio>
       </Center>
+
+      <h4>
+      まず最初に、自己紹介お願いします。
+       </h4>
+      
+
+      <Center>
+       <audio controls src="/1-1.wav">
+       Your browser does not support the
+       </audio>
+      </Center>
+
+      <h4>
+       人生の中で一番ピンチだった経験とそれをどうやって乗り越えたかを教えてください。
+       </h4>
       </div>
       </Center>
 
