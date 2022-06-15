@@ -34,6 +34,16 @@ const Home: NextPage = () => {
       <h4>
        人生の中で一番ピンチだった経験とそれをどうやって乗り越えたかを教えてください。
        </h4>
+
+      <Center>
+       <audio controls src="/2-1.wav">
+       Your browser does not support the
+       </audio>
+      </Center>
+
+      <h4>
+      逆に質問がありましたらお願いします。
+       </h4>
       </div>
       </Center>
 
