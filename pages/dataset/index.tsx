@@ -1,13 +1,39 @@
 /* eslint-disable react/no-children-prop */
 import type { NextPage } from 'next'
-import { Box, Button, ChakraProvider, HStack, Input, InputGroup, InputLeftAddon, Stack, Table, TableCaption, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr } from '@chakra-ui/react'
+import { Box, Button, ChakraProvider, HStack, Input, InputGroup, InputLeftAddon, Select, Stack, Table, TableCaption, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr } from '@chakra-ui/react'
 import { SetStateAction, useEffect, useState } from 'react'
 
 const Home: NextPage = () => {
+    const csv_sds = ["気が沈んで憂うつだ",
+        "朝方はいちばん気分がよい",
+        "悲しい、泣きたくなる",
+        "夜、眠れない",
+        "食欲はふつうだ",
+        "まだ性欲がある（セックスが楽しい）",
+        "最近痩せてきた",
+        "便秘している",
+        "動悸がする",
+        "何となく疲れる",
+        "気持はいつもさっぱりしている",
+        "いつもとかわりなく行動できる",
+        "落ち着かずじっとしていられない",
+        "将来に希望がある",
+        "いつもよりいらいらする",
+        "{たやすく決断できる}",
+        "役に立つ働ける人間だと思う",
+        "生活はかなり充実している",
+        "自分が死んだほうが他の者は楽に暮らせると思う",
+        "以前からしていることを今でも楽しんでいる",]
     const [pair,setPair] = useState([<></>])
     const [cvalue, setCvalue] = useState('')
     const [uvalue, setUvalue] = useState('')
+    const [value, setValue] = useState('')
     const [csv, setCsv] = useState(['computer,user'])
+
+    const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setValue(event.target.value);
+        setCsv([`main_question,${event.target.options[event.target.selectedIndex].text}`].concat(csv))
+      };
     const handleChangeC = (event:React.FormEvent<HTMLInputElement> ) => setCvalue(event.currentTarget.value)
     const handleChangeU = (event:React.FormEvent<HTMLInputElement> ) => setUvalue(event.currentTarget.value)
     const userButton = () => {
@@ -44,31 +70,41 @@ const Home: NextPage = () => {
     + csv.join("\n");
 
     const downloadLink = document.createElement("a");
-downloadLink.href = uri;
-downloadLink.download = "success.csv";
+    downloadLink.href = uri;
+    downloadLink.download = "success.csv";
 
-document.body.appendChild(downloadLink);
-downloadLink.click();
-document.body.removeChild(downloadLink);
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
 
     }
-
+    const map_sds = (ques : String) => {
+        return (<option value='option1'>{ques}</option>)
+    }
     const export_csv_f = () => {
 
         const uri = "data:text/csv;charset=utf-8," 
     + csv.join("\n");
 
     const downloadLink = document.createElement("a");
-downloadLink.href = uri;
-downloadLink.download = "failed.csv";
+    downloadLink.href = uri;
+    downloadLink.download = "failed.csv";
 
-document.body.appendChild(downloadLink);
-downloadLink.click();
-document.body.removeChild(downloadLink);
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
 
     }
+    useEffect(()=>{
+
+        setCsv([''])
+        setPair([<></>])
+    },[])
   return (
-    <ChakraProvider>
+        <ChakraProvider>
+        <Select placeholder='Select option'  maxW="960px" m = {4} value={value} onChange={handleChange}> 
+            {csv_sds.map( x => map_sds(x))}
+        </Select>
         <HStack m = {4}>
         <Button onClick={reset}>
             RESET
