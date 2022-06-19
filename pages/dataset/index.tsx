@@ -19,7 +19,7 @@ const Home: NextPage = () => {
         "落ち着かずじっとしていられない",
         "将来に希望がある",
         "いつもよりいらいらする",
-        "{たやすく決断できる}",
+        "たやすく決断できる",
         "役に立つ働ける人間だと思う",
         "生活はかなり充実している",
         "自分が死んだほうが他の者は楽に暮らせると思う",
@@ -28,12 +28,16 @@ const Home: NextPage = () => {
     const [cvalue, setCvalue] = useState('')
     const [uvalue, setUvalue] = useState('')
     const [value, setValue] = useState('')
+    const [delete_, setDelete_] = useState('')
     const [csv, setCsv] = useState(['computer,user'])
 
     const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setValue(event.target.value);
-        console.log(event.target.value)
+        if(csv[0].includes(`main_question,`)){
+            setCsv(csv.splice(0,1))
+        }
         setCsv([`main_question,${event.target.options[event.target.selectedIndex].text}`].concat(csv))
+        
       };
     const handleChangeC = (event:React.FormEvent<HTMLInputElement> ) => setCvalue(event.currentTarget.value)
     const handleChangeU = (event:React.FormEvent<HTMLInputElement> ) => setUvalue(event.currentTarget.value)
