@@ -32,6 +32,7 @@ const Home: NextPage = () => {
 
     const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setValue(event.target.value);
+        console.log(event.target.value)
         setCsv([`main_question,${event.target.options[event.target.selectedIndex].text}`].concat(csv))
       };
     const handleChangeC = (event:React.FormEvent<HTMLInputElement> ) => setCvalue(event.currentTarget.value)
@@ -79,7 +80,7 @@ const Home: NextPage = () => {
 
     }
     const map_sds = (ques : String) => {
-        return (<option value='option1'>{ques}</option>)
+        return (<option value={ques.toString()}>{ques}</option>)
     }
     const export_csv_f = () => {
 
